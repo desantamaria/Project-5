@@ -91,67 +91,6 @@ public final class ResizeableArrayStack<T> implements StackInterface<T>
     } // end clear
     
     /**
-     * Function that evaluates a postfix equation in the form of the string.
-     * @param postfix equation you input, in postfix form. (With spaces in between to seperate multi-digit numbers)
-     * @return an int that was popped from the stack after the operations are finished. */
-    public int evaluatePostfix(String postfix) {
-        StackInterface<Integer> valueStack = new ResizeableArrayStack<>();
-        int index = 0;
-
-        while(index < postfix.length()) {
-            char nextCharacter = checkIfDigit(postfix.charAt(index));
-            char numIndex = postfix.charAt(index);
-            switch(nextCharacter)
-            {
-                case '~':
-                    int num = 0; 
-                  
-                    while(Character.isDigit(numIndex)) 
-                    { 
-                        num = num*10 + (int)(numIndex-'0'); 
-                        index++; 
-                        numIndex = postfix.charAt(index); 
-                    } // end while
-                    index--; 
-                
-                    valueStack.push(num);
-                    break;
-                case '+' : 
-                    int operandOne = valueStack.pop();
-                    int operandTwo = valueStack.pop();
-                    valueStack.push(operandTwo+operandOne);
-                    break;
-                case '-' : 
-                    int operandA = valueStack.pop();
-                    int operandB = valueStack.pop();
-                    valueStack.push(operandB-operandA);
-                    break;
-                case '*' : 
-                    int operandX = valueStack.pop();
-                    int operandY = valueStack.pop();
-                    valueStack.push(operandY*operandX);
-                    break;
-                case '/' : 
-                    int operandAlpha = valueStack.pop();
-                    int operandOmega = valueStack.pop();
-                    valueStack.push(operandOmega/operandAlpha);
-                    break;
-                
-                case '^' :
-                    int operandFirst = valueStack.pop();
-                    int operandSecond = valueStack.pop();
-
-                    valueStack.push((int) Math.pow(operandSecond, operandFirst));
-                    break;
-                default: break;
-            } // end switch
-            
-            index++; 
-        } // end while
-        return valueStack.peek();
-    } // end evaluatePostfix
-    
-    /**
      * Method that doubles the stack length if the stack is full. */
     private void ensureCapacity()
     {
@@ -162,18 +101,6 @@ public final class ResizeableArrayStack<T> implements StackInterface<T>
             stack = Arrays.copyOf(stack, newLength);
         } // end if
     } // end ensureCapacity
-    
-    /**
-     * Method that checks whether the input is a digit
-     * @param input a character that is going to be checked
-     * @return the character '~' if the input is a digit or "input" if not a digit. */
-    private char checkIfDigit(char input) //checks if character is a member of the alphabet
-    {
-        if(Character.isDigit(input)) 
-            return '~'; //signifier for a letter of the alphabet
-        else 
-            return input;
-    } // end checkIfDigit
 
     /** Checks if the Stack is not corrupt 
      * @throws  IllegalStateException throws exception if the integrity is not there*/
