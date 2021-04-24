@@ -1,4 +1,4 @@
-package ADTPackage;
+package ADTPackage.Stack;
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
