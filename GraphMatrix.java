@@ -1,3 +1,6 @@
+import ADTPackage.*; // Classes that implement various ADTs
+import java.util.Iterator;
+
 public final class GraphMatrix<T> implements GraphInterface<T> {
     private boolean[][] edges;
     private T[] labels;
@@ -79,6 +82,45 @@ public final class GraphMatrix<T> implements GraphInterface<T> {
    /** Removes all vertices and edges from this graph resulting in an empty graph. */
    public void clear()
    {
-       
+
    }
+
+   protected void resetVertices()
+    {
+        Iterator<VertexInterface<T>> vertexIterator = vertices.getValueIterator();
+        while (vertexIterator.hasNext())
+        {
+            VertexInterface<T> nextVertex = VertexIterator.next();
+            nextVertex.unvisit();
+            nextVertex.setCost(0);
+            nextVertex.setPredecessor(null);
+        } // end while
+    } // end resetVertices
+
+   public QueueInterface<T> getBreadthFirstTraversal(T origin)
+    {
+        resetVertices();
+        QueueInterface<T> traversalOrder = new LinkedQueue<>();
+        QueueInterface<VertexInterface<T>> vertexQueue = new LinkedQueue<>();
+        VertexInterface<T> originVertex = vertices.getValue(origin);
+        originVertex.visit();
+        traversalOrder.enqueue(origin); // Enqueue vertex label
+        vertexQueue.enqueue(originVertex); // Enqueue vertex
+        while (!vertexQueue.isEmpty())
+        {
+            VertexInterface<T> frontVertex = vertexQueue.dequeue();
+            Iterator<VertexInterface<T>> neighbors = frontVertex.getNeighborIterator();
+            while (neighbors.hasNext())
+            {
+                VertexInterface<T> nextNeighbor = neighbors.next();
+                if (!nextNeighbor.isVisited())
+                {
+                    nextNeighbor.visit();
+                    traversalOrder.enqueue(nextNeighbor.getLabel());
+                    vertexQueue.enqueue(nextNeighbor);
+                } // end if
+            } // end while
+        } // end while
+        return traversalOrder;
+    } // end getBreadthFirstTraversal
 }
