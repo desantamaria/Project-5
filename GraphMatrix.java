@@ -1,16 +1,16 @@
 import ADTPackage.*; // Classes that implement various ADTs
+import GraphPackage.*;
 import java.util.Iterator;
 
 public final class GraphMatrix<T> implements GraphInterface<T> {
-    private boolean[][] edges;
-    private T[] labels;
+    
+    private DictionaryInterface<T, VertexInterface<T>> vertices;
+    private int edgeCount;
 
-    public GraphMatrix(int n)
+    public GraphMatrix()
     {
-        edges = new boolean[n][n];
-        @SuppressWarnings("unchecked")
-        T[] tempLabels = (T[]) new Object[n];
-        labels = tempLabels;
+        vertices = new LinkedDictionary<>();
+        edgeCount = 0;
     }
 
        /** Adds a given vertex to this graph.
@@ -19,7 +19,8 @@ public final class GraphMatrix<T> implements GraphInterface<T> {
        @return  True if the vertex is added, or false if not. */
    public boolean addVertex(T vertexLabel)
    {
-
+        VertexInterface<T> addOutcome = vertices.add(vertexLabel, new Vertex<>(vertexLabel));
+        return addOutcome == null; // Was addition to dictionary successful?
    }
 
    /** Adds a weighted edge between two given distinct vertices that 
@@ -33,7 +34,14 @@ public final class GraphMatrix<T> implements GraphInterface<T> {
        @return  True if the edge is added, or false if not. */
    public boolean addEdge(T begin, T end, double edgeWeight)
    {
-
+        boolean result = false;
+        VertexInterface<T> beginVertex = vertices.getValue(begin);
+        VertexInterface<T> endVertex = vertices.getValue(end);
+        if ( (beginVertex != null) && (endVertex != null) )
+            result = beginVertex.connect(endVertex, edgeWeight);
+        if (result)
+            edgeCount++;
+        return result;
    }
 
    /** Adds an unweighted edge between two given distinct vertices 
@@ -46,7 +54,7 @@ public final class GraphMatrix<T> implements GraphInterface<T> {
        @return  True if the edge is added, or false if not. */
    public boolean addEdge(T begin, T end)
    {
-
+        return addEdge(begin, end, 0);
    }
 
    /** Sees whether an edge exists between two given vertices.
@@ -55,34 +63,48 @@ public final class GraphMatrix<T> implements GraphInterface<T> {
        @return  True if an edge exists. */
    public boolean hasEdge(T begin, T end)
    {
-
+        boolean found = false;
+        VertexInterface<T> beginVertex = vertices.getValue(begin);
+        VertexInterface<T> endVertex = vertices.getValue(end);
+        if ( (beginVertex != null) && (endVertex != null) )
+        {
+        Iterator<VertexInterface<T>> neighbors = beginVertex.getNeighborIterator();
+        while (!found && neighbors.hasNext())
+        {
+            VertexInterface<T> nextNeighbor = neighbors.next();
+            if (endVertex.equals(nextNeighbor))
+                found = true;
+        } // end while
+        } // end if
+        return found;
    }
 
    /** Sees whether this graph is empty.
        @return  True if the graph is empty. */
    public boolean isEmpty()
    {
-
+        return vertices.isEmpty();
    }
 
    /** Gets the number of vertices in this graph.
        @return  The number of vertices in the graph. */
    public int getNumberOfVertices()
    {
-
+        return vertices.getSize();
    }
 
    /** Gets the number of edges in this graph.
       @return  The number of edges in the graph. */
    public int getNumberOfEdges()
    {
-
+        return edgeCount;
    }
 
    /** Removes all vertices and edges from this graph resulting in an empty graph. */
    public void clear()
    {
-
+        vertices.clear();
+        edgeCount = 0;
    }
 
    protected void resetVertices()
@@ -90,9 +112,8 @@ public final class GraphMatrix<T> implements GraphInterface<T> {
         Iterator<VertexInterface<T>> vertexIterator = vertices.getValueIterator();
         while (vertexIterator.hasNext())
         {
-            VertexInterface<T> nextVertex = VertexIterator.next();
+            VertexInterface<T> nextVertex = vertexIterator.next();
             nextVertex.unvisit();
-            nextVertex.setCost(0);
             nextVertex.setPredecessor(null);
         } // end while
     } // end resetVertices

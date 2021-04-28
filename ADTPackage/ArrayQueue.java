@@ -1,4 +1,4 @@
-package ADTPackage.Queue;
+package ADTPackage;
 
 /**
    A class that implements a queue of objects by using an array.

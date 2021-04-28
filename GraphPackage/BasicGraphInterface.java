@@ -1,3 +1,5 @@
+package GraphPackage;
+
 /**
    An interface of methods providing basic operations for directed
    and undirected graphs that are either weighted or unweighted.
