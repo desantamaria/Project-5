@@ -144,4 +144,28 @@ public final class GraphMatrix<T> implements GraphInterface<T> {
         } // end while
         return traversalOrder;
     } // end getBreadthFirstTraversal
+
+@Override
+public QueueInterface<T> getDepthFirstTraversal(T origin) {
+    // TODO Auto-generated method stub
+    return null;
+}
+
+@Override
+public StackInterface<T> getTopologicalOrder() {
+    // TODO Auto-generated method stub
+    return null;
+}
+
+@Override
+public int getShortestPath(T begin, T end, StackInterface<T> path) {
+    // TODO Auto-generated method stub
+    return 0;
+}
+
+@Override
+public double getCheapestPath(T begin, T end, StackInterface<T> path) {
+    // TODO Auto-generated method stub
+    return 0;
+}
 }
