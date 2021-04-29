@@ -147,7 +147,7 @@ public final class GraphMatrix<T> implements GraphInterface<T> {
 
 public QueueInterface<T> getDepthFirstTraversal(T origin) {
     resetVertices();
-    StackInterface<T> traversalOrder = new ResizeableArrayStack()();
+    StackInterface<T> traversalOrder = new ResizeableArrayStack();
 
     return null;
 }
