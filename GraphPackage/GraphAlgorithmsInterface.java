@@ -1,6 +1,7 @@
 package GraphPackage;
 
-import ADTPackage.*; // Classes that implement various ADTs
+import ADTPackage.Queue.QueueInterface;
+import ADTPackage.Stack.StackInterface;
 /** 
    An interface of methods that process an existing graph. 
    @author Frank M. Carrano

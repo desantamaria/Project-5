@@ -1,6 +1,14 @@
-import ADTPackage.*; // Classes that implement various ADTs
-import GraphPackage.*;
 import java.util.Iterator;
+
+import ADTPackage.Dictionary.DictionaryInterface;
+import ADTPackage.Dictionary.UnsortedLinkedDictionary;
+import ADTPackage.Queue.LinkedQueue;
+import ADTPackage.Queue.QueueInterface;
+import ADTPackage.Stack.ResizeableArrayStack;
+import ADTPackage.Stack.StackInterface;
+import GraphPackage.GraphInterface;
+import GraphPackage.Vertex;
+import GraphPackage.VertexInterface;
 
 public final class GraphMatrix<T> implements GraphInterface<T> {
     
@@ -9,7 +17,7 @@ public final class GraphMatrix<T> implements GraphInterface<T> {
 
     public GraphMatrix()
     {
-        vertices = new LinkedDictionary<>();
+        vertices = new UnsortedLinkedDictionary<>();
         edgeCount = 0;
     }
 
