@@ -1,4 +1,4 @@
-import ADTPackage.QueueInterface;
+import ADTPackage.Queue.*;
 import GraphPackage.*;
 
 public class TestFile {
