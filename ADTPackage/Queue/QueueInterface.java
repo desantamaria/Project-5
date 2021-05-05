@@ -1,4 +1,4 @@
-package ADTPackage;
+package ADTPackage.Queue;
 
 /**
    An interface for the ADT queue.   

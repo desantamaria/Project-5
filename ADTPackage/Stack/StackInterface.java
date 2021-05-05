@@ -1,4 +1,4 @@
-package ADTPackage;
+package ADTPackage.Stack;
 /**
 @author Daniel Santamaria
 @author Renwell Queyquep

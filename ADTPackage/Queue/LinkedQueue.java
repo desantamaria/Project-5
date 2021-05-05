@@ -1,4 +1,4 @@
-package ADTPackage;
+package ADTPackage.Queue;
 
 /**
    A class that implements a queue of objects by using
@@ -10,8 +10,8 @@ package ADTPackage;
 */
 public final class LinkedQueue<T> implements QueueInterface<T>
 {
-   private Node<T> firstNode; // References node at front of queue
-   private Node<T> lastNode;  // References node at back of queue
+   private Node firstNode; // References node at front of queue
+   private Node lastNode;  // References node at back of queue
   	
 	public LinkedQueue()
 	{
@@ -19,10 +19,8 @@ public final class LinkedQueue<T> implements QueueInterface<T>
 		lastNode = null;
 	} // end default constructor
 
-//  < Implementations of the queue operations go here. >
-//  . . .
 	public void enqueue(T newEntry) {
-		Node<T> newNode = new Node<T>(newEntry, null);
+		Node newNode = new Node(newEntry, null);
 		if (isEmpty())
 			firstNode = newNode;
 		else
@@ -57,10 +55,10 @@ public final class LinkedQueue<T> implements QueueInterface<T>
 		lastNode = null;
 	}
 
-	private class Node<T>
+	private class Node
 	{
 		private T    data; // Entry in queue
-		private Node<T> next; // Link to next node
+		private Node next; // Link to next node
       
 		private Node(T dataPortion)
 		{
@@ -68,7 +66,7 @@ public final class LinkedQueue<T> implements QueueInterface<T>
 			next = null;
 		} // end constructor
 		
-		private Node(T dataPortion, Node<T> linkPortion)
+		private Node(T dataPortion, Node linkPortion)
 		{
 			data = dataPortion;
 			next = linkPortion;
@@ -84,12 +82,12 @@ public final class LinkedQueue<T> implements QueueInterface<T>
 			data = newData;
 		} // end setData
       
-		private Node<T> getNextNode()
+		private Node getNextNode()
 		{
 			return next;
 		} // end getNextNode
 		
-		private void setNextNode(Node<T> nextNode)
+		private void setNextNode(Node nextNode)
 		{
 			next = nextNode;
 		} // end setNextNode

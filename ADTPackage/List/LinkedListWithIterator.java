@@ -1,4 +1,4 @@
-package GraphPackage;
+package ADTPackage.List;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 /**
