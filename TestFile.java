@@ -32,9 +32,10 @@ public class TestFile {
         Matrix1.addEdge('C', 'B');
 
         QueueInterface<Character> breadthFirstTravel = Matrix1.getBreadthFirstTraversal('A');
+        System.out.print("Breadth First Travel: ");
         while(!breadthFirstTravel.isEmpty())
         {
-            System.out.println(breadthFirstTravel.dequeue());
+            System.out.print(breadthFirstTravel.dequeue() + ", ");
         }
 
     }
