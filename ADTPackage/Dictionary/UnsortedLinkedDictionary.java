@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 
 public class UnsortedLinkedDictionary<K, V> implements DictionaryInterface<K, V>
 {
-    private Node firstNode; // Reference to first node of chain
+    private Node<K, V> firstNode; // Reference to first node of chain
     private int numberOfEntries;
 
     public UnsortedLinkedDictionary()
@@ -31,7 +31,7 @@ public class UnsortedLinkedDictionary<K, V> implements DictionaryInterface<K, V>
                 return this.getValue(key);
             } else
             {
-                Node newNode = new Node(key, value, firstNode);
+                Node<K, V> newNode = new Node<K, V>(key, value, firstNode);
                 firstNode = newNode;
                 numberOfEntries++;
                 return null;
@@ -60,8 +60,8 @@ public class UnsortedLinkedDictionary<K, V> implements DictionaryInterface<K, V>
 
     public V getValue(K key)
     {
-        Node currentNode = firstNode;
-        Node nodeBefore = null;
+        Node<K, V> currentNode = firstNode;
+        Node<K, V> nodeBefore = null;
         while (currentNode != null)
         {
             if (key.equals(currentNode.getKey()))
@@ -77,8 +77,8 @@ public class UnsortedLinkedDictionary<K, V> implements DictionaryInterface<K, V>
     public boolean contains(K key)
     {
         boolean contains = false;
-        Node currentNode = firstNode;
-        Node nodeBefore = null;
+        Node<K, V> currentNode = firstNode;
+        Node<K, V> nodeBefore = null;
         while ((currentNode != null))
         {
             if (key.equals(currentNode.getKey()))
@@ -128,7 +128,7 @@ public class UnsortedLinkedDictionary<K, V> implements DictionaryInterface<K, V>
         private K key;
         private V value;
 
-        private Node next; // Link to next node
+        private Node<K, V> next; // Link to next node
 
         private Node(K keyPortion, V dataPortion)
         {
@@ -137,14 +137,14 @@ public class UnsortedLinkedDictionary<K, V> implements DictionaryInterface<K, V>
             next = null;
         } // end constructor
 
-        private Node(K keyPortion, V dataPortion, Node nextNode)
+        private Node(K keyPortion, V dataPortion, Node<K, V> nextNode)
         {
             key = keyPortion;
             value = dataPortion;
             next = nextNode;
         } // end constructor
 
-        private Node getNextNode()
+        private Node<K, V> getNextNode()
         {
             return next;
         } // end getNextNode
@@ -159,7 +159,7 @@ public class UnsortedLinkedDictionary<K, V> implements DictionaryInterface<K, V>
             return value;
         }
 
-        private void setNextNode(Node nextNode)
+        private void setNextNode(Node<K, V> nextNode)
         {
             next = nextNode;
         } // end setNextNode
@@ -168,7 +168,7 @@ public class UnsortedLinkedDictionary<K, V> implements DictionaryInterface<K, V>
 
     private class KeyIterator implements Iterator<K>
     {
-        private Node nextNode;
+        private Node<K, V> nextNode;
 
         private KeyIterator()
         {
@@ -198,7 +198,7 @@ public class UnsortedLinkedDictionary<K, V> implements DictionaryInterface<K, V>
 
     private class ValueIterator implements Iterator<V>
     {
-        private Node nextNode;
+        private Node<K, V> nextNode;
 
         private ValueIterator()
         {
