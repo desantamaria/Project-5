@@ -21,15 +21,4 @@ public interface GraphAlgorithmsInterface<T>
                 the label of the origin vertex at the queue's front. */
    public QueueInterface<T> getDepthFirstTraversal(T origin);
 
-   /** Finds the shortest-length path between two given vertices in this graph.
-       @param begin  An object that labels the path's origin vertex.
-       @param end    An object that labels the path's destination vertex.
-       @param path   A stack of labels that is empty initially;
-                     at the completion of the method, this stack contains
-                     the labels of the vertices along the shortest path;
-                     the label of the origin vertex is at the top, and
-                     the label of the destination vertex is at the bottom       
-       @return  The length of the shortest path. */
-   public int getShortestPath(T begin, T end, StackInterface<T> path);
-
 } // end GraphAlgorithmsInterface

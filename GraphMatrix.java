@@ -9,7 +9,7 @@ public final class GraphMatrix<T> implements GraphInterface<T> {
 
     public GraphMatrix()
     {
-        vertices = new LinkedDictionary<>();
+        vertices = new UnsortedLinkedDictionary<>();
         edgeCount = 0;
     }
 
@@ -170,18 +170,4 @@ public final class GraphMatrix<T> implements GraphInterface<T> {
             } // end while
             return traversalOrder;
     } // end getDepthFirstTraversal
-
-    public StackInterface<T> getTopologicalOrder() {
-        
-        return null;
-    }
-
-    public int getShortestPath(T begin, T end, StackInterface<T> path) {
-        
-        return 0;
-    }
-
-    public double getCheapestPath(T begin, T end, StackInterface<T> path) {
-        return 0;
-    }
 }
