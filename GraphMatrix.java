@@ -166,27 +166,31 @@ public final class GraphMatrix<T> implements GraphInterface<T> {
             
         
         while (!vertexStack.isEmpty())
-            {
-                VertexInterface<T> topVertex = vertexStack.peek();
-                Iterator<VertexInterface<T>> neighbors = topVertex.getNeighborIterator();
+        {
+            VertexInterface<T> topVertex = vertexStack.peek();
+            Iterator<VertexInterface<T>> neighbors = topVertex.getNeighborIterator();
                 
-                if (neighbors.hasNext())
-                {
-                    VertexInterface<T> nextNeighbor = neighbors.next();
+            if (neighbors.hasNext())
+            {
+                VertexInterface<T> nextNeighbor = neighbors.next();
                     
-                    if(!nextNeighbor.isVisited()) 
-                    {
-                        nextNeighbor.visit();
+                if(!nextNeighbor.isVisited()) 
+                {
+                    nextNeighbor.visit();
 
-                        traversalOrder.enqueue(nextNeighbor.getLabel());
-                        vertexStack.push(nextNeighbor);
-                    } // end if
+                    traversalOrder.enqueue(nextNeighbor.getLabel());
+                    vertexStack.push(nextNeighbor);
                 } // end if
                 else 
-                    {
-                        vertexStack.pop();
-                    } // end else
-            } // end while
+                {
+                    vertexStack.pop();
+                } // end else
+            } // end if
+            else 
+            {
+                vertexStack.pop();
+            } // end else
+        } // end while
             return traversalOrder;
     } // end getDepthFirstTraversal
 }
