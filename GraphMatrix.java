@@ -170,7 +170,7 @@ public final class GraphMatrix<T> implements GraphInterface<T> {
                 VertexInterface<T> topVertex = vertexStack.peek();
                 Iterator<VertexInterface<T>> neighbors = topVertex.getNeighborIterator();
                 
-                if (!neighbors.hasNext())
+                if (neighbors.hasNext())
                 {
                     VertexInterface<T> nextNeighbor = neighbors.next();
                     
