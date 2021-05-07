@@ -158,23 +158,34 @@ public final class GraphMatrix<T> implements GraphInterface<T> {
         QueueInterface<T> traversalOrder = new LinkedQueue<>();
         StackInterface<VertexInterface<T>> vertexStack = new ResizeableArrayStack<>();
         VertexInterface<T> originVertex = vertices.getValue(origin);
-            originVertex.visit();
-            traversalOrder.enqueue(origin); // Enqueue vertex label
-            vertexStack.push(originVertex); // Enqueue vertex
-            while (!vertexStack.isEmpty())
+        
+        originVertex.visit();
+        
+        traversalOrder.enqueue(origin); // Enqueue vertex
+        vertexStack.push(originVertex); // push vertex
+            
+        
+        while (!vertexStack.isEmpty())
             {
-                VertexInterface<T> frontVertex = vertexStack.pop();
-                Iterator<VertexInterface<T>> neighbors = frontVertex.getNeighborIterator();
-                while (neighbors.hasNext())
+                VertexInterface<T> topVertex = vertexStack.peek();
+                Iterator<VertexInterface<T>> neighbors = topVertex.getNeighborIterator();
+                
+                if (!neighbors.hasNext())
                 {
                     VertexInterface<T> nextNeighbor = neighbors.next();
-                    if (!nextNeighbor.isVisited())
+                    
+                    if(!nextNeighbor.isVisited()) 
                     {
                         nextNeighbor.visit();
+
                         traversalOrder.enqueue(nextNeighbor.getLabel());
                         vertexStack.push(nextNeighbor);
                     } // end if
-                } // end while
+                } // end if
+                else 
+                    {
+                        vertexStack.pop();
+                    } // end else
             } // end while
             return traversalOrder;
     } // end getDepthFirstTraversal

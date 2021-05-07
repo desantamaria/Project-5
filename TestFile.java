@@ -38,7 +38,9 @@ public class TestFile {
             System.out.print(breadthFirstTravel.dequeue() + ", ");
         }
 
-        QueueInterface<Character> depthFirstTravel = Matrix1.getBreadthFirstTraversal('A');
+        System.out.println("");
+
+        QueueInterface<Character> depthFirstTravel = Matrix1.getDepthFirstTraversal('A');
         System.out.print("Depth First Travel: ");
         while(!depthFirstTravel.isEmpty())
         {
