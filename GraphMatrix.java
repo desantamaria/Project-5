@@ -157,8 +157,8 @@ public final class GraphMatrix<T> implements GraphInterface<T> {
         resetVertices();
         QueueInterface<T> traversalOrder = new LinkedQueue<>();
         StackInterface<VertexInterface<T>> vertexStack = new ResizeableArrayStack<>();
-        VertexInterface<T> originVertex = vertices.getValue(origin);
         
+        VertexInterface<T> originVertex = vertices.getValue(origin);
         originVertex.visit();
         
         traversalOrder.enqueue(origin); // Enqueue vertex
@@ -168,23 +168,14 @@ public final class GraphMatrix<T> implements GraphInterface<T> {
         while (!vertexStack.isEmpty())
         {
             VertexInterface<T> topVertex = vertexStack.peek();
-            Iterator<VertexInterface<T>> neighbors = topVertex.getNeighborIterator();
+            VertexInterface<T> nextNeighbor = topVertex.getUnvisitedNeighbor();
                 
-            if (neighbors.hasNext())
+            if (nextNeighbor != null)
             {
-                VertexInterface<T> nextNeighbor = neighbors.next();
-                    
-                if(!nextNeighbor.isVisited()) 
-                {
-                    nextNeighbor.visit();
+                nextNeighbor.visit();
 
-                    traversalOrder.enqueue(nextNeighbor.getLabel());
-                    vertexStack.push(nextNeighbor);
-                } // end if
-                else 
-                {
-                    vertexStack.pop();
-                } // end else
+                traversalOrder.enqueue(nextNeighbor.getLabel());
+                vertexStack.push(nextNeighbor);
             } // end if
             else 
             {
