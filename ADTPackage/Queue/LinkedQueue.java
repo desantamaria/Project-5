@@ -77,10 +77,10 @@ public final class LinkedQueue<T> implements QueueInterface<T>
 			return data;
 		} // end getData
       
-		private void setData(T newData)
+		/*private void setData(T newData)
 		{
 			data = newData;
-		} // end setData
+		} // end setData */
       
 		private Node getNextNode()
 		{

@@ -61,14 +61,14 @@ public class UnsortedLinkedDictionary<K, V> implements DictionaryInterface<K, V>
     public V getValue(K key)
     {
         Node<K, V> currentNode = firstNode;
-        Node<K, V> nodeBefore = null;
+        //Node<K, V> nodeBefore = null;
         while (currentNode != null)
         {
             if (key.equals(currentNode.getKey()))
             {
                 return (V) currentNode.getValue();
             }
-            nodeBefore = currentNode;
+            //nodeBefore = currentNode;
             currentNode = currentNode.getNextNode();
         } // end while
         return null;
@@ -78,7 +78,7 @@ public class UnsortedLinkedDictionary<K, V> implements DictionaryInterface<K, V>
     {
         boolean contains = false;
         Node<K, V> currentNode = firstNode;
-        Node<K, V> nodeBefore = null;
+        //Node<K, V> nodeBefore = null;
         while ((currentNode != null))
         {
             if (key.equals(currentNode.getKey()))
@@ -86,7 +86,7 @@ public class UnsortedLinkedDictionary<K, V> implements DictionaryInterface<K, V>
                 contains = true;
                 break;
             }
-            nodeBefore = currentNode;
+            //nodeBefore = currentNode;
             currentNode = currentNode.getNextNode();
         } // end while
         return contains;
@@ -159,10 +159,10 @@ public class UnsortedLinkedDictionary<K, V> implements DictionaryInterface<K, V>
             return value;
         }
 
-        private void setNextNode(Node<K, V> nextNode)
+        /*private void setNextNode(Node<K, V> nextNode)
         {
             next = nextNode;
-        } // end setNextNode
+        } // end setNextNode */
 
     }
 
