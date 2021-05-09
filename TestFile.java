@@ -1,37 +1,48 @@
 import ADTPackage.Queue.*;
 import GraphPackage.*;
 
+/**
+@author Daniel Santamaria
+@author Renwell Queyquep
+CS2400
+5/9/21 
+ */
+
+/**
+ * A class of thats tests the traversals of graphs.
+ */
+
 public class TestFile {
     public static void main(String[] args)
     {
-        GraphInterface<Character> Matrix1 = new GraphMatrix<>();
+        GraphInterface<Character> Graph1 = new Graph<>();
 
         //Add vertices to the graph
-        Matrix1.addVertex('A');
-        Matrix1.addVertex('B');
-        Matrix1.addVertex('C');
-        Matrix1.addVertex('D');
-        Matrix1.addVertex('E');
-        Matrix1.addVertex('F');
-        Matrix1.addVertex('G');
-        Matrix1.addVertex('H');
-        Matrix1.addVertex('I');
+        Graph1.addVertex('A');
+        Graph1.addVertex('B');
+        Graph1.addVertex('C');
+        Graph1.addVertex('D');
+        Graph1.addVertex('E');
+        Graph1.addVertex('F');
+        Graph1.addVertex('G');
+        Graph1.addVertex('H');
+        Graph1.addVertex('I');
 
         //Connect the vertices
-        Matrix1.addEdge('A', 'B');
-        Matrix1.addEdge('A', 'E');
-        Matrix1.addEdge('A', 'D');
-        Matrix1.addEdge('B', 'E');
-        Matrix1.addEdge('D', 'G');
-        Matrix1.addEdge('E', 'F');
-        Matrix1.addEdge('E', 'H');
-        Matrix1.addEdge('G', 'H');
-        Matrix1.addEdge('H', 'I');
-        Matrix1.addEdge('F', 'H');
-        Matrix1.addEdge('F', 'C');
-        Matrix1.addEdge('C', 'B');
+        Graph1.addEdge('A', 'B');
+        Graph1.addEdge('A', 'E');
+        Graph1.addEdge('A', 'D');
+        Graph1.addEdge('B', 'E');
+        Graph1.addEdge('D', 'G');
+        Graph1.addEdge('E', 'F');
+        Graph1.addEdge('E', 'H');
+        Graph1.addEdge('G', 'H');
+        Graph1.addEdge('H', 'I');
+        Graph1.addEdge('F', 'H');
+        Graph1.addEdge('F', 'C');
+        Graph1.addEdge('C', 'B');
 
-        QueueInterface<Character> breadthFirstTravel = Matrix1.getBreadthFirstTraversal('A');
+        QueueInterface<Character> breadthFirstTravel = Graph1.getBreadthFirstTraversal('A');
         System.out.print("Breadth First Travel: ");
         while(!breadthFirstTravel.isEmpty())
         {
@@ -40,7 +51,7 @@ public class TestFile {
 
         System.out.println("");
 
-        QueueInterface<Character> depthFirstTravel = Matrix1.getDepthFirstTraversal('A');
+        QueueInterface<Character> depthFirstTravel = Graph1.getDepthFirstTraversal('A');
         System.out.print("Depth First Travel: ");
         while(!depthFirstTravel.isEmpty())
         {

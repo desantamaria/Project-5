@@ -28,8 +28,6 @@ public class Vertex<T> implements VertexInterface<T>
       previousVertex = null;
    } // end constructor
 
-/* Implementations of the vertex operations go here.
-   . . . */
     public T getLabel()
     {
         return label;

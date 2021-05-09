@@ -10,12 +10,23 @@ import GraphPackage.GraphInterface;
 import GraphPackage.Vertex;
 import GraphPackage.VertexInterface;
 
-public final class GraphMatrix<T> implements GraphInterface<T> {
+/**
+@author Daniel Santamaria
+@author Renwell Queyquep
+CS2400
+5/9/21 
+ */
+
+/**
+ * A data structure that consists of a finite set of nodes (or vertices) and a set of edges connecting them.
+ */
+
+public final class Graph<T> implements GraphInterface<T> {
     
     private DictionaryInterface<T, VertexInterface<T>> vertices;
     private int edgeCount;
 
-    public GraphMatrix()
+    public Graph()
     {
         vertices = new UnsortedLinkedDictionary<>();
         edgeCount = 0;
