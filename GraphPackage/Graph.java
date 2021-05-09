@@ -1,3 +1,5 @@
+package GraphPackage;
+
 import java.util.Iterator;
 
 import ADTPackage.Dictionary.DictionaryInterface;
@@ -6,9 +8,6 @@ import ADTPackage.Queue.LinkedQueue;
 import ADTPackage.Queue.QueueInterface;
 import ADTPackage.Stack.ResizeableArrayStack;
 import ADTPackage.Stack.StackInterface;
-import GraphPackage.GraphInterface;
-import GraphPackage.Vertex;
-import GraphPackage.VertexInterface;
 
 /**
 @author Daniel Santamaria
